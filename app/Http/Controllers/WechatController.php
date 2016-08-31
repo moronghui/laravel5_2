@@ -28,7 +28,8 @@ class WechatController extends Controller
                     return '你好'.$user->get($message->FromUserName)->nickname.',你发送的内容是：'.$message->Content;
                     break;
                 case 'image':
-                    return '图片消息';
+                    $users=$user->lists();                   
+                    return $users;
                     break;
                 case 'voice':
                     return '语音消息';

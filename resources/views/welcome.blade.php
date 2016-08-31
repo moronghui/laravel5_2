@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5(text)</div>
+                <div class="title">Laravel 5(user)</div>
             </div>
         </div>
     </body>
