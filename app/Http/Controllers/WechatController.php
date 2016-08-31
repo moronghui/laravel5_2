@@ -18,33 +18,26 @@ class WechatController extends Controller
     {
 
         $wechat = app('wechat');
-        $use=$wechat->user;
-        $wechat->server->setMessageHandler(function($message) use ($userApi){
+        $user=$wechat->user;
+        $wechat->server->setMessageHandler(function($message) use ($user){
             switch ($message->MsgType) {
             case 'event':
                 return "您好！莫荣辉测试公众号。";
                 break;
             case 'text':
-                return '你好'.$userApi->get($message->FromUserName)->nickname.',你发送的内容是：'.$message->Content;
+                return '你好'.$user->get($message->FromUserName)->nickname.',你发送的内容是：'.$message->Content;
                 break;
             case 'image':
-                # 图片消息...
+                return '图片消息';
                 break;
             case 'voice':
-                # 语音消息...
+                return '语音消息';
                 break;
             case 'video':
-                # 视频消息...
+                return '视频消息';
                 break;
-            case 'location':
-                # 坐标消息...
-                break;
-            case 'link':
-                # 链接消息...
-                break;
-            // ... 其它消息
             default:
-                # code...
+                return 'default';
                 break;
     }
         });
