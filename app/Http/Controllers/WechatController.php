@@ -25,7 +25,12 @@ class WechatController extends Controller
                     return "您好！莫荣辉测试公众号。";
                     break;
                 case 'text':
-                    $users=$user->lists();
+                    //素材管理
+                    $material=$wechat->material;
+                    $image=$material->uploadImage(public_path().'images/aa.png');
+                    return gettype($image);
+                    //获取用户信息
+                    /*$users=$user->lists();
                     if ($users!=''&&!is_null($users)) {
                         $data=$users->data;
                         $openid=$data['openid'];
@@ -33,7 +38,7 @@ class WechatController extends Controller
                     }
                     else{
                         return '无关注用户';
-                    }
+                    }*/
                     /*return '你好'.$user->get($message->FromUserName)->nickname.',你发送的内容是：'.$message->Content;*/
                     break;
                 case 'image':
