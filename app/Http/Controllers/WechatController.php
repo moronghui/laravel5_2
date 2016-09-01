@@ -25,17 +25,24 @@ class WechatController extends Controller
                     return "您好！莫荣辉测试公众号。";
                     break;
                 case 'text':
-                    return '你好'.$user->get($message->FromUserName)->nickname.',你发送的内容是：'.$message->Content;
+                    $users=$user->lists();
+                    if ($users!=''&&!is_null($users)) {
+                        return '用户个数：'.$users->total;
+                    }
+                    else{
+                        return '无关注用户';
+                    }
+                    /*return '你好'.$user->get($message->FromUserName)->nickname.',你发送的内容是：'.$message->Content;*/
                     break;
                 case 'image':
                     $users=$user->lists();
-                    $usersJson=json_encode($users);
-                    $data=$usersJson->data->openid;
-                    $str='用户列表';
-                    foreach ($$data as $value) {
-                        $str.=$value;
+                    if ($users!=''&&!is_null($users)) {
+                        return '用户个数：'.$users->total;
                     }
-                    return '第一个用户：'.$str
+                    else{
+                        return '无关注用户';
+                    }
+                   
                     break;
                 case 'voice':
                     return '语音消息';
