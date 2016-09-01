@@ -26,7 +26,7 @@ class WechatController extends Controller
                     break;
                 case 'text':
                     //素材管理
-                    $material=$wechat->material;
+                    //$material=$wechat->material;
                     /*$image=$material->uploadImage(rtrim(app_path(),'/app').'/public/images/aa.png');*/
                     return rtrim(app_path(),'/app').'/public/images/aa.png';//gettype($image);
                     //获取用户信息
