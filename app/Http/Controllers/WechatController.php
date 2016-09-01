@@ -26,10 +26,40 @@ class WechatController extends Controller
                     return "您好！莫荣辉测试公众号。";
                     break;
                 case 'text':
+                    //菜单
+                    $menu = $wechat->menu;
+                    $buttons = [
+                        [
+                            "type" => "click",
+                            "name" => "今日歌曲",
+                            "key"  => "V1001_TODAY_MUSIC"
+                        ],
+                        [
+                            "name"       => "菜单",
+                            "sub_button" => [
+                                [
+                                    "type" => "view",
+                                    "name" => "搜索",
+                                    "url"  => "http://www.soso.com/"
+                                ],
+                                [
+                                    "type" => "view",
+                                    "name" => "视频",
+                                    "url"  => "http://v.qq.com/"
+                                ],
+                                [
+                                    "type" => "click",
+                                    "name" => "赞一下我们",
+                                    "key" => "V1001_GOOD"
+                                ],
+                            ],
+                        ],
+                    ];
+                    $menu->add($buttons);
                     //素材管理
-                    $path=rtrim(app_path(),'/app').'/public/images/aa.png';
+                    /*$path=rtrim(app_path(),'/app').'/public/images/aa.png';
                     $image=$material->uploadImage($path);
-                    return '类型：'.gettype($image);
+                    return '类型：'.gettype($image);*/
                     //获取用户信息
                     /*$users=$user->lists();
                     if ($users!=''&&!is_null($users)) {
