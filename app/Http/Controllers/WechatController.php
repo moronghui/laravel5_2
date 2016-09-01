@@ -19,7 +19,7 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $user=$wechat->user;
-        $material=$wechat->material;
+        $material=$wechat->material_temporary;
         $wechat->server->setMessageHandler(function($message) use ($user){
                 switch ($message->MsgType) {
                 case 'event':
