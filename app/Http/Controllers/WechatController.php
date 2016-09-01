@@ -19,6 +19,7 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $user=$wechat->user;
+        $material=$wechat->material;
         $wechat->server->setMessageHandler(function($message) use ($user){
                 switch ($message->MsgType) {
                 case 'event':
@@ -26,9 +27,9 @@ class WechatController extends Controller
                     break;
                 case 'text':
                     //素材管理
-                    //$material=$wechat->material;
-                    /*$image=$material->uploadImage(rtrim(app_path(),'/app').'/public/images/aa.png');*/
-                    return rtrim(app_path(),'/app').'/public/images/aa.png';//gettype($image);
+                    $path=rtrim(app_path(),'/app').'/public/images/aa.png';
+                    $image=$material->uploadImage($path);
+                    return '类型：'.gettype($image);
                     //获取用户信息
                     /*$users=$user->lists();
                     if ($users!=''&&!is_null($users)) {
