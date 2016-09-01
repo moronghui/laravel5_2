@@ -27,8 +27,8 @@ class WechatController extends Controller
                 case 'text':
                     //素材管理
                     $material=$wechat->material;
-                    $image=$material->uploadImage(public_path().'images/aa.png');
-                    return gettype($image);
+                    /*$image=$material->uploadImage(rtrim(app_path(),'/app').'/public/images/aa.png');*/
+                    return rtrim(app_path(),'/app').'/public/images/aa.png';//gettype($image);
                     //获取用户信息
                     /*$users=$user->lists();
                     if ($users!=''&&!is_null($users)) {
