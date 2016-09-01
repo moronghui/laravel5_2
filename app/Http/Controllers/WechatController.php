@@ -29,8 +29,13 @@ class WechatController extends Controller
                     break;
                 case 'image':
                     $users=$user->lists();
-
-                    return '第一个用户：'.$users[0];
+                    $usersJson=json_encode($users);
+                    $data=$usersJson->data->openid;
+                    $str='用户列表';
+                    foreach ($$data as $value) {
+                        $str.=$value;
+                    }
+                    return '第一个用户：'.$str
                     break;
                 case 'voice':
                     return '语音消息';
