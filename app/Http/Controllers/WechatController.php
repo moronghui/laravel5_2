@@ -29,7 +29,7 @@ class WechatController extends Controller
                     if ($users!=''&&!is_null($users)) {
                         $data=$users->data;
                         $openid=$data['openid'];
-                        return '用户个数：'.gettype($users);
+                        return '用户个数：'.$users->data['openid'][0];
                     }
                     else{
                         return '无关注用户';
