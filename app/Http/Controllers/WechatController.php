@@ -27,7 +27,7 @@ class WechatController extends Controller
                 case 'text':
                     $users=$user->lists();
                     if ($users!=''&&!is_null($users)) {
-                        return '用户个数：'.count($user->data->openid).gettype($user->data->openid);
+                        return '用户个数：'.count($users->data->openid).gettype($users->data->openid);
                     }
                     else{
                         return '无关注用户';
